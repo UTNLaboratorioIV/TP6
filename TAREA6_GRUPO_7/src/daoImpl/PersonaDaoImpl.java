@@ -1,0 +1,79 @@
+package daoImpl;
+
+import java.util.List;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import dao.PersonaDao;
+import entidad.Persona;
+
+public class PersonaDaoImpl implements PersonaDao {
+
+	
+	
+	
+	private static final String insert = "INSERT INTO personas (dni, nombre, apellido) VALUES (?, ?, ?)";
+	
+	
+	public PersonaDaoImpl()
+	{
+		
+	}
+	
+	
+	
+	@Override
+	public boolean insert(Persona p) {
+		PreparedStatement statement;
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		boolean insertOk = false;
+		
+		try {
+			statement = conexion.prepareStatement(insert);
+			statement.setString(1, p.getDni());
+			statement.setString(2, p.getNombre());
+			statement.setString(3, p.getApellido());
+			
+			if (statement.executeUpdate() > 0) {
+				conexion.commit();
+				insertOk = true;
+				System.out.println("Persona insertada correctamente");
+			}
+
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			try {
+				conexion.rollback();
+			} catch (SQLException e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		
+		return insertOk;
+	}
+
+	@Override
+	public boolean delete(Persona p_delete) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean update(Persona p_update) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<Persona> readAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	
+}
