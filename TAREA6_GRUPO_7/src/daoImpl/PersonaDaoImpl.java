@@ -22,8 +22,6 @@ public class PersonaDaoImpl implements PersonaDao {
 		
 	}
 	
-	
-	
 	@Override
 	public boolean insert(Persona p) {
 		PreparedStatement statement;
@@ -70,10 +68,29 @@ public class PersonaDaoImpl implements PersonaDao {
 
 	@Override
 	public List<Persona> readAll() {
-		// TODO Auto-generated method stub
-		return null;
+	    PreparedStatement statement;
+	    ResultSet resultSet;
+	    Connection conexion = Conexion.getConexion().getSQLConexion();
+	    List<Persona> personas = new ArrayList<>();
+
+	    String readAll = "SELECT dni, nombre, apellido FROM personas";
+	    try {
+	        statement = conexion.prepareStatement(readAll);
+	        resultSet = statement.executeQuery();
+
+	        while (resultSet.next()) {
+	            String dni = resultSet.getString("dni");
+	            String nombre = resultSet.getString("nombre");
+	            String apellido = resultSet.getString("apellido");
+
+	            Persona persona = new Persona(dni, nombre, apellido);
+	            personas.add(persona);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return personas;
 	}
-	
 	
 	
 }
