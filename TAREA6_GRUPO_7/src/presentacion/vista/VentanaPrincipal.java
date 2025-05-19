@@ -1,4 +1,5 @@
 package presentacion.vista;
+import presentacion.controlador.listar_controller;
 import presentacion.vista.agregar;
 import presentacion.vista.eliminar;
 import java.awt.BorderLayout;
@@ -67,6 +68,12 @@ public class VentanaPrincipal extends JFrame {
 		});
 		JMenuItem menuListar = new JMenuItem("Listar");
 		mnNewMenu.add(menuListar);
+			menuListar.addActionListener(e ->{
+				listar ventana = new listar();
+				listar_controller controlador = new listar_controller();
+				controlador.llenarTabla(ventana);
+				ventana.setVisible(true);
+			});
 	}
 
 	public JButton getBtnEliminar() {
