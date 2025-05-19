@@ -7,11 +7,7 @@ public class Persona {
 	public String apellido;
 	
 	
-	public Persona() {
-		
-		
-	}
-	
+	public Persona() { }
 	
 	public Persona(String dni, String nombre, String apellido) {
 		this.dni = dni;
@@ -19,45 +15,15 @@ public class Persona {
 		this.apellido = apellido;
 	}
 
-	
+	public String getDni() { return dni; }
+	public String getNombre() { return nombre; }
+	public String getApellido() { return apellido; }
 
-	public String getDni() {
-		return dni;
-	}
-
-
-	public void setDni(String dni) {
-		this.dni = dni;
-	}
-
-
-	public String getNombre() {
-		return nombre;
-	}
-
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-
-	public String getApellido() {
-		return apellido;
-	}
-
-
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-
+	public void setDni(String dni) { this.dni = dni; }
+	public void setNombre(String nombre) { this.nombre = nombre; }
+	public void setApellido(String apellido) { this.apellido = apellido; }
 
 	@Override
-	public String toString() {
-		return "Persona \nDni: " + dni + "\nNombre: " + nombre + "\nApellido: " + apellido;
-	}
-	
-	
-	
-	
+	public String toString() { return apellido + ", " + nombre + " - DNI: " + dni; }
 	
 }
