@@ -4,6 +4,8 @@ import presentacion.vista.eliminar;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+import javax.swing.AbstractButton;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -40,34 +42,38 @@ public class VentanaPrincipal extends JFrame {
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
-		
 		JMenu mnNewMenu = new JMenu("Persona");
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem menuAgregar = new JMenuItem("Agregar");
-		mnNewMenu.add(menuAgregar); // agregamos la funcionalidad para ir al formulario
+		mnNewMenu.add(menuAgregar); 
 		menuAgregar.addActionListener(e -> {
 		    agregar frmAgregar = new agregar();
 		    frmAgregar.setVisible(true);
 		});
 
-		
 		JMenuItem menuModificar = new JMenuItem("Modificar");
 		mnNewMenu.add(menuModificar);
 		menuModificar.addActionListener(e ->{
 			modificar frmMod = new modificar();
 			frmMod.setVisible(true);
 		});
-		
+	
 		JMenuItem MenuEliminar = new JMenuItem("Eliminar");
 		mnNewMenu.add(MenuEliminar);
 		MenuEliminar.addActionListener(e ->{
 			eliminar frmEliminar = new eliminar();
 			frmEliminar.setVisible(true);
 		});
-		
 		JMenuItem menuListar = new JMenuItem("Listar");
 		mnNewMenu.add(menuListar);
 	}
+
+	public JButton getBtnEliminar() {
+        return getBtnEliminar();
+    }
+	public JButton getBtnAgregar() {
+        return getBtnAgregar();
+    }
 
 }
