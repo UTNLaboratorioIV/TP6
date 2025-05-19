@@ -12,12 +12,12 @@ import entidad.Persona;
 import negocio.PersonaNegocio;
 import presentacion.vista.VentanaPrincipal;
 
-public class Controlador implements ActionListener {
+public class eliminar_controller implements ActionListener {
 
     private VentanaPrincipal ventanaPrincipal;
     private PersonaNegocio pNeg;
 
-    public Controlador(VentanaPrincipal vista, PersonaNegocio pNeg) {
+    public eliminar_controller(VentanaPrincipal vista, PersonaNegocio pNeg) {
         this.ventanaPrincipal = vista;
         this.pNeg = pNeg;
 
