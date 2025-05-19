@@ -4,7 +4,7 @@ import daoImpl.PersonaDaoImpl;
 import entidad.Persona;
 import negocio.PersonaNegocio;
 import negocioImpl.PersonaNegocioImpl;
-import presentacion.controller.Controlador;
+import presentacion.controlador.Controlador;
 import presentacion.vista.VentanaPrincipal;
 import presentacion.vista.eliminar;
 
