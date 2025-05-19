@@ -1,18 +1,4 @@
-/*package main;
-
-import daoImpl.PersonaDaoImpl;
-import entidad.Persona;
-
-public class Principal {
-
-	public static void main(String[] args) {
-		
-
-
-	}
-
-}*/
-
+/*
 package main;
 
 import negocio.PersonaNegocio;
@@ -38,6 +24,27 @@ public class Principal {
         ventana.setVisible(true); // Mostrar la ventana
     }
 }
+*/
 
+package main;
 
+import daoImpl.PersonaDaoImpl;
+import entidad.Persona;
+import negocio.PersonaNegocio;
+import negocioImpl.PersonaNegocioImpl;
+import presentacion.controlador.eliminar_controller;
+import presentacion.vista.VentanaPrincipal;
+import presentacion.vista.eliminar;
 
+public class Principal {
+
+	public static void main(String[] args) {
+		
+		  PersonaNegocio personaNegocio = new PersonaNegocioImpl(); // 
+	        VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+
+	        eliminar_controller controlador = new eliminar_controller(ventanaPrincipal, personaNegocio);
+
+	}
+
+}
