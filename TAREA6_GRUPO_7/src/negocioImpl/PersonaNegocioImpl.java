@@ -1,6 +1,5 @@
 package negocioImpl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import entidad.Persona;
@@ -28,8 +27,8 @@ public class PersonaNegocioImpl implements PersonaNegocio {
 
 	@Override
 	public List<Persona> readAll() {
-		 List<Persona> lista = new ArrayList<>();
-		    return lista; 
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

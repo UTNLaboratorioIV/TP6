@@ -5,7 +5,6 @@ public class Persona {
 	public String dni;
 	public String nombre;
 	public String apellido;
-	private int id;
 	
 	
 	public Persona() {
@@ -18,13 +17,6 @@ public class Persona {
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
-	}
-	
-	public Persona(int id, String nombre, String apellido, String dni) {
-	    this.id = id;
-	    this.nombre = nombre;
-	    this.apellido = apellido;
-	    this.dni = dni;
 	}
 
 	
@@ -41,16 +33,6 @@ public class Persona {
 
 	public String getNombre() {
 		return nombre;
-	}
-	
-
-	public int getId() {
-		return id;
-	}
-
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 
