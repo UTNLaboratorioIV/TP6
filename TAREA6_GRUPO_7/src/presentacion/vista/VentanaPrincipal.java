@@ -1,4 +1,5 @@
 package presentacion.vista;
+import presentacion.controlador.insert_controller;
 import presentacion.controlador.listar_controller;
 import presentacion.vista.agregar;
 import presentacion.vista.eliminar;
@@ -49,8 +50,9 @@ public class VentanaPrincipal extends JFrame {
 		JMenuItem menuAgregar = new JMenuItem("Agregar");
 		mnNewMenu.add(menuAgregar); 
 		menuAgregar.addActionListener(e -> {
-		    agregar frmAgregar = new agregar();
-		    frmAgregar.setVisible(true);
+			agregar ventana_agregar = new agregar();
+			insert_controller controlador = new insert_controller(ventana_agregar);
+			ventana_agregar.setVisible(true);
 		});
 
 		JMenuItem menuModificar = new JMenuItem("Modificar");
@@ -66,6 +68,7 @@ public class VentanaPrincipal extends JFrame {
 			eliminar frmEliminar = new eliminar();
 			frmEliminar.setVisible(true);
 		});
+		
 		JMenuItem menuListar = new JMenuItem("Listar");
 		mnNewMenu.add(menuListar);
 			menuListar.addActionListener(e ->{

@@ -8,25 +8,25 @@ import javax.swing.DefaultListModel;
 
 import entidad.Persona;
 import negocio.PersonaNegocio;
-import presentacion.vista.wds_insert;
+import negocioImpl.PersonaNegocioImpl;
+import presentacion.vista.agregar;
 
 public class insert_controller implements ActionListener{
 	
-	private PersonaNegocio personaNegocio;
-	private wds_insert insert_ventana;
+	private PersonaNegocio personaNegocio = new PersonaNegocioImpl();
+	private agregar insert_ventana;
 	
 	
-	public insert_controller(wds_insert ventana, PersonaNegocio personaNegocio)
+	public insert_controller(agregar ventana)
 	{
 		this.insert_ventana = ventana;
-		this.personaNegocio = personaNegocio;
 		
 		 //VINCULACIÖN DEL BOTÓN ACEPTAR
 	    this.insert_ventana.getBtnAceptar().addActionListener(this);
 	}
 	
 	
-	private void EventoClickBtn_Insert(ActionEvent a) {
+	public void EventoClickBtn_Insert(ActionEvent a) {
 	    String nombre = insert_ventana.getTxtNombre().getText().trim();
 	    String apellido = insert_ventana.getTxtApellido().getText().trim();
 	    String dni = insert_ventana.getTxtDNI().getText().trim();
