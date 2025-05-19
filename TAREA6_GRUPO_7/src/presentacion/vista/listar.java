@@ -10,12 +10,12 @@ import java.util.List;
 import daoImpl.PersonaDaoImpl;
 import entidad.Persona;
 
-public class wds_listar extends JFrame {
+public class listar extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JTable table;
 
-    public wds_listar() {
+    public listar() {
         setTitle("Programa");
         setSize(400, 300);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -54,7 +54,7 @@ public class wds_listar extends JFrame {
     }
 
     public static void main(String[] args) {
-        wds_listar ventana = new wds_listar();
+        listar ventana = new listar();
         ventana.setVisible(true);
     }
 }
