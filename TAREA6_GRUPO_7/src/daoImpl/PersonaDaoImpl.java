@@ -57,32 +57,41 @@ public class PersonaDaoImpl implements PersonaDao {
 
 	@Override
 	public boolean delete(Persona p_delete) {
-		Connection conn = null;
+	    Connection conn = Conexion.getConexion().getSQLConexion();
 	    PreparedStatement stm = null;
-	    boolean fueEliminado = false;
+	    boolean eliminado = false;
+	    String sql = "DELETE FROM Personas WHERE Dni = ?";
 
 	    try {
-	        conn = (Connection) Conexion.getConexion();
-	        String sql = "DELETE FROM personas WHERE id = ?";
 	        stm = conn.prepareStatement(sql);
-	        stm.setInt(1, p_delete.getId()); 
+	        stm.setString(1, p_delete.getDni());
 
-	        int filasAfectadas = stm.executeUpdate();
-	        fueEliminado = filasAfectadas > 0;
+	        int filas = stm.executeUpdate();
 
-	    } catch (Exception e) {
+	        if (filas > 0) {
+	            conn.commit();
+	            eliminado = true;
+	        } else {
+	            eliminado = false;
+	        }
+	    } catch (SQLException e) {
 	        e.printStackTrace();
+	        try {
+	            if (conn != null) conn.rollback();
+	        } catch (SQLException ex) {
+	            ex.printStackTrace();
+	        }
+	        eliminado = false;
 	    } finally {
 	        try {
 	            if (stm != null) stm.close();
-	            if (conn != null) conn.close();
-	        } catch (Exception e2) {
-	            e2.printStackTrace();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
 	        }
 	    }
 
-	    return fueEliminado;
-		
+	    System.out.println("delete() retornando: " + eliminado);
+	    return eliminado;
 	}
 
 	@Override

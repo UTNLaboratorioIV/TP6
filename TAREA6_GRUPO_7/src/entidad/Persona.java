@@ -27,8 +27,20 @@ public class Persona {
 		return "Persona \nDni: " + dni + "\nNombre: " + nombre + "\nApellido: " + apellido;
 	}
 	
-	
-	
-	
+	@Override
+	public boolean equals(Object obj) {
+	    if (this == obj)
+	        return true;
+	    if (obj == null || getClass() != obj.getClass())
+	        return false;
+	    Persona other = (Persona) obj;
+	    return dni != null && dni.equals(other.dni);
+	}
+
+	@Override
+	public int hashCode() {
+	    return dni == null ? 0 : dni.hashCode();
+	}
+
 	
 }

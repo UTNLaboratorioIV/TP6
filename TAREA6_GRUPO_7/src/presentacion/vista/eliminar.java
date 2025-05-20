@@ -1,63 +1,50 @@
 package presentacion.vista;
 
-import java.util.List;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import java.awt.*;
+import java.util.List;
+
 import entidad.Persona;
-import javax.swing.JList;
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import javax.swing.DefaultListModel;
 
 public class eliminar extends JFrame {
+    private static final long serialVersionUID = 1L;
+    private JPanel contentPane;
+    private JList<Persona> listaPersonas;
+    private JButton btnEliminar;
 
-	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-	private JButton btnEliminar;
-	private JList<Persona> jlistPersonas;
-	private DefaultListModel<Persona> modeloLista;
+    public eliminar() {
+        setTitle("Eliminar Persona");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setBounds(100, 100, 450, 300);
 
-	public eliminar() {
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+        contentPane = new JPanel();
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
 
-		JLabel lblEliminarUser = new JLabel("Seleccionar usuario");
-		lblEliminarUser.setBounds(98, 11, 134, 14);
-		contentPane.add(lblEliminarUser);
+        listaPersonas = new JList<>();
+        listaPersonas.setBounds(30, 20, 370, 180);
+        contentPane.add(listaPersonas);
 
-		modeloLista = new DefaultListModel<>();
-		jlistPersonas = new JList<>(modeloLista);
-		jlistPersonas.setBounds(98, 37, 223, 153);
-		contentPane.add(jlistPersonas);
+        btnEliminar = new JButton("Eliminar");
+        btnEliminar.setBounds(165, 220, 100, 25);
+        contentPane.add(btnEliminar);
+    }
 
-		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(170, 201, 89, 23);
-		contentPane.add(btnEliminar);
-	}
+    public void actualizarLista(List<Persona> personas) {
+        DefaultListModel<Persona> model = new DefaultListModel<>();
+        for (Persona p : personas) {
+            model.addElement(p);
+        }
+        listaPersonas.setModel(model);
+    }
 
-	// nos de vuelve el boton para enlazar con el controlador 
-	public JButton getbtnEliminar() {
-		return btnEliminar;
-	}
+    public Persona getPersonaSeleccionada() {
+        return listaPersonas.getSelectedValue();
+    }
 
-	// nos da la persona seleccionada en el list 
-	public Persona getPersonaSeleccionada() {
-		return jlistPersonas.getSelectedValue();
-	}
-
-	// carga la info de la db
-	public void actualizarLista(List<Persona> personas) {
-		 if (personas == null) return; 
-
-		    DefaultListModel<Persona> model = new DefaultListModel<>();
-		    for (Persona p : personas) {
-		        model.addElement(p);
-		    }
-		    jlistPersonas.setModel(model);
-	}
+    public JButton getbtnEliminar() {
+        return btnEliminar;
+    }
 }

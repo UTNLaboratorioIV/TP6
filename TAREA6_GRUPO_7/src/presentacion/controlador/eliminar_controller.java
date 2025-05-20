@@ -1,55 +1,50 @@
 package presentacion.controlador;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.JOptionPane;
 
 import presentacion.vista.eliminar;
 import entidad.Persona;
 import negocio.PersonaNegocio;
-import presentacion.vista.VentanaPrincipal;
 
-public class eliminar_controller implements ActionListener {
+public class eliminar_controller {
 
-    private VentanaPrincipal ventanaPrincipal;
+    private eliminar eliminarVista;
     private PersonaNegocio pNeg;
 
-    public eliminar_controller(VentanaPrincipal vista, PersonaNegocio pNeg) {
-        this.ventanaPrincipal = vista;
+    public eliminar_controller(PersonaNegocio pNeg) {
+        this.eliminarVista = new eliminar();
         this.pNeg = pNeg;
 
-        this.ventanaPrincipal.setVisible(true);
-
-        this.ventanaPrincipal.getBtnEliminar().addActionListener(e -> mostrarEliminar());
-        
+        inicializar();
     }
 
-    private void mostrarEliminar() {
-        eliminar eliminarVista = new eliminar();
+    public void inicializar() {
         List<Persona> lista = pNeg.readAll();
         eliminarVista.actualizarLista(lista);
 
         eliminarVista.getbtnEliminar().addActionListener(e -> {
             Persona seleccionada = eliminarVista.getPersonaSeleccionada();
             if (seleccionada != null) {
-                int confirm = JOptionPane.showConfirmDialog(null, "¿Estas seguro de eliminar?");
+                System.out.println("Intentando eliminar persona con DNI: " + seleccionada.getDni()); // <-- Aquí
+                int confirm = JOptionPane.showConfirmDialog(null, "¿Estás seguro de eliminar?");
                 if (confirm == JOptionPane.YES_OPTION) {
-                    if (pNeg.delete(seleccionada)) {
-                        JOptionPane.showMessageDialog(null, "Eliminado.");
-                        eliminarVista.actualizarLista(pNeg.readAll()); // actualizamos lista
-                    }
+                	if (pNeg.delete(seleccionada)) {
+                	    System.out.println("Eliminación exitosa en delete()");
+                	    JOptionPane.showMessageDialog(null, "Eliminado.");
+                	    eliminarVista.actualizarLista(pNeg.readAll());
+                	} else {
+                	    System.out.println("Eliminación fallida en delete()");
+                	    JOptionPane.showMessageDialog(null, "No se pudo eliminar la persona.");
+                	}
+
                 }
             }
         });
 
-        eliminarVista.setVisible(true);
     }
 
-    
-
-    @Override
-    public void actionPerformed(ActionEvent e) {}
+    public void mostrarVista() {
+        eliminarVista.setVisible(true);
+    }
 }
