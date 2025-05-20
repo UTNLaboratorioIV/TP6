@@ -1,6 +1,8 @@
 package presentacion.vista;
 import presentacion.controlador.insert_controller;
 import presentacion.controlador.listar_controller;
+import presentacion.controlador.modificar_controller;
+
 import java.awt.EventQueue;
 
 import javax.swing.JButton;
@@ -11,6 +13,7 @@ import javax.swing.JMenuItem;
 public class VentanaPrincipal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	private JMenuItem menuModificar;
 
 	/**
 	 * Launch the application.
@@ -50,15 +53,18 @@ public class VentanaPrincipal extends JFrame {
 
 		JMenuItem menuModificar = new JMenuItem("Modificar");
 		mnNewMenu.add(menuModificar);
-		menuModificar.addActionListener(e ->{
+		menuModificar.addActionListener(e -> {
 			modificar frmMod = new modificar();
-			frmMod.setVisible(true);
+			modificar_controller controlador = new modificar_controller(frmMod, new negocioImpl.PersonaNegocioImpl());
+			controlador.inicializar();
 		});
+		
 	
 		JMenuItem MenuEliminar = new JMenuItem("Eliminar");
 		mnNewMenu.add(MenuEliminar);
 		MenuEliminar.addActionListener(e ->{
 			eliminar frmEliminar = new eliminar();
+			
 			frmEliminar.setVisible(true);
 		});
 		
@@ -71,7 +77,11 @@ public class VentanaPrincipal extends JFrame {
 				ventana.setVisible(true);
 			});
 	}
-
+	
+	public JMenuItem getMenuModificar() {
+	    return menuModificar;
+	}
+	
 	public JButton getBtnEliminar() {
         return getBtnEliminar();
     }
