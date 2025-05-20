@@ -1,23 +1,23 @@
 package presentacion.vista;
+import presentacion.controlador.eliminar_controller;
 import presentacion.controlador.insert_controller;
 import presentacion.controlador.listar_controller;
-import presentacion.vista.agregar;
-import presentacion.vista.eliminar;
-import java.awt.BorderLayout;
+import presentacion.controlador.modificar_controller;
+
 import java.awt.EventQueue;
 
-import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-import presentacion.vista.modificar;
+
+import negocioImpl.PersonaNegocioImpl;
 public class VentanaPrincipal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	private JMenuItem menuModificar;
+	private JButton btnEliminar;
 
 	/**
 	 * Launch the application.
@@ -57,17 +57,22 @@ public class VentanaPrincipal extends JFrame {
 
 		JMenuItem menuModificar = new JMenuItem("Modificar");
 		mnNewMenu.add(menuModificar);
-		menuModificar.addActionListener(e ->{
+		menuModificar.addActionListener(e -> {
 			modificar frmMod = new modificar();
-			frmMod.setVisible(true);
+			modificar_controller controlador = new modificar_controller(frmMod, new negocioImpl.PersonaNegocioImpl());
+			controlador.inicializar();
 		});
+		
 	
 		JMenuItem MenuEliminar = new JMenuItem("Eliminar");
-		mnNewMenu.add(MenuEliminar);
-		MenuEliminar.addActionListener(e ->{
-			eliminar frmEliminar = new eliminar();
-			frmEliminar.setVisible(true);
-		});
+	    mnNewMenu.add(MenuEliminar);
+	    MenuEliminar.addActionListener(e -> {
+	        eliminar_controller controlador = new eliminar_controller(new PersonaNegocioImpl());
+	        controlador.mostrarVista();
+	    });
+
+	    btnEliminar = new JButton("Eliminar");
+
 		
 		JMenuItem menuListar = new JMenuItem("Listar");
 		mnNewMenu.add(menuListar);
@@ -78,10 +83,15 @@ public class VentanaPrincipal extends JFrame {
 				ventana.setVisible(true);
 			});
 	}
-
+	
+	public JMenuItem getMenuModificar() {
+	    return menuModificar;
+	}
+	
 	public JButton getBtnEliminar() {
-        return getBtnEliminar();
-    }
+	    return btnEliminar;
+	}
+
 	public JButton getBtnAgregar() {
         return getBtnAgregar();
     }
