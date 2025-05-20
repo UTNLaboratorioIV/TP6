@@ -1,17 +1,10 @@
 package presentacion.vista;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import presentacion.controlador.insert_controller;
-
 //KEY LISTENERS
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;

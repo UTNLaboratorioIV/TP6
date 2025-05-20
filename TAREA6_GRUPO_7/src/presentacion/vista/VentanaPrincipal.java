@@ -1,20 +1,13 @@
 package presentacion.vista;
 import presentacion.controlador.insert_controller;
 import presentacion.controlador.listar_controller;
-import presentacion.vista.agregar;
-import presentacion.vista.eliminar;
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-import presentacion.vista.modificar;
 public class VentanaPrincipal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
